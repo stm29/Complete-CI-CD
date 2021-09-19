@@ -17,8 +17,6 @@ pipeline {
                                 ], 
                                 transfers: [
                                     sshTransfer(
-                                        sourceFiles: '**/**',
-                                        remoteDirectory: '/var/www',
                                         execCommand: 'sudo /usr/bin/systemctl stop apache2'
                                     )
                                 ]
