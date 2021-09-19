@@ -2,6 +2,11 @@
 pipeline {
     agent any
     stages {
+        stage('mkdir'){
+            steps{
+            sh'mkdir ios'
+            }
+        }
         stage('DeployToStaging') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
