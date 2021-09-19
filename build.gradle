@@ -1,0 +1,15 @@
+plugins {
+id 'com.moowork.node' version '1.2.0'
+}
+task t1 {
+doLast {
+println'Hello World! 1st Build Using Gradle'
+}
+}
+task t2 {
+    doLast {
+        println("Incrementing Beta Version Number...")
+        println("Incrementing Beta Version Number...")
+    }
+}
+t1.dependsOn t2
