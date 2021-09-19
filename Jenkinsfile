@@ -9,31 +9,14 @@ pipeline {
                 archiveArtifacts artifacts: 'index.html'
             }
         }
-        stage('DeployToStaging') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
-                    sshPublisher(
-                        failOnError: true,
-                        continueOnError: false,
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: 'Staging',
-                                sshCredentials: [
-                                    username: "$USERNAME",
-                                    encryptedPassphrase: "$USERPASS"
-                                ], 
-                                transfers: [
-                                    sshTransfer(
-                                        sourceFiles: 'index.html',
-                                        remoteDirectory: '/var/www/html',
-                                        execCommand: 'sudo systemctl stop apache2 && sudo rm -rf /var/www/html/* && sudo /usr/bin/systemctl start apache2'
-                                    )
-                                ]
-                            )
-                        ]
-                    )
-                }
-            }
+        stage ('Deploy') {
+    steps{
+        sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
+            sh 'ssh -o StrictHostKeyChecking=no sam@13.234.7.156 uptime'
+            sh 'ssh -v sam@13.234.7.156'
+            sh 'scp ./index.html sam@13.234.7.156:/var/www/html'
         }
+    }
+}
     }
 }
