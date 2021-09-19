@@ -22,8 +22,6 @@ pipeline {
                                     username: "$USERNAME",
                                     encryptedPassphrase: "$USERPASS"
                                 ], 
-                                echo "$USERNAME",
-                                echo "$USERPASS",
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'index.html',
