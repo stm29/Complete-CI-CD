@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'Running build automation'
                 sh 'gradle build --no-daemon'
-                archiveArtifacts artifacts: './index.html.zip'
+                archiveArtifacts artifacts: 'index.html'
             }
         }
         stage('DeployToStaging') {
@@ -26,9 +26,9 @@ pipeline {
                                 ], 
                                 transfers: [
                                     sshTransfer(
-                                        sourceFiles: './index.html.zip',
+                                        sourceFiles: 'index.html',
                                         remoteDirectory: '/tmp',
-                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && unzip /tmp/index.html.zip -d /var/www/html && sudo /usr/bin/systemctl start apache2'
+                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && unzip /tmp/index.html -d /var/www/html && sudo /usr/bin/systemctl start apache2'
                                     )
                                 ]
                             )
@@ -57,9 +57,9 @@ pipeline {
                                 ], 
                                 transfers: [
                                     sshTransfer(
-                                        sourceFiles: 'index.html.zip',
+                                        sourceFiles: 'index.html',
                                         remoteDirectory: '/tmp',
-                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && unzip /tmp/index.html.zip -d /var/www/html && sudo /usr/bin/systemctl start apache2'
+                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && unzip /tmp/index.html -d /var/www/html && sudo /usr/bin/systemctl start apache2'
                                     )
                                 ]
                             )
