@@ -15,12 +15,6 @@ pipeline {
                         failOnError: true,
                         continueOnError: false,
                         publishers: [
-                            sshPublisherDesc(
-                                configName: 'staging',
-                                sshCredentials: [
-                                    username: "$USERNAME",
-                                    encryptedPassphrase: "$USERPASS"
-                                ], 
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'index.html',
@@ -42,13 +36,6 @@ pipeline {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: 'production',
-                                sshCredentials: [
-                                    username: "$USERNAME",
-                                    encryptedPassphrase: "$USERPASS"
-                                ], 
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'index.html',
