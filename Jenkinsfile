@@ -21,7 +21,7 @@ pipeline {
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: '**/**',
-                                        remoteDirectory: '/')
+                                        remoteDirectory: '/var/www/')
                                 ]
                             )
                         ]
