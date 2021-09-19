@@ -12,6 +12,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
+                        configName: 'staging',
                         failOnError: true,
                         continueOnError: false,
                         publishers: [
@@ -39,6 +40,7 @@ pipeline {
                 milestone(1)
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
+                        configName: 'staging',
                         failOnError: true,
                         continueOnError: false,
                         publishers: [
