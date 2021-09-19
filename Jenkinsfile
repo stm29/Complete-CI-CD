@@ -24,8 +24,8 @@ pipeline {
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'index.html',
-                                        remoteDirectory: '/tmp',
-                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && unzip /tmp/index.html -d /var/www/html && sudo /usr/bin/systemctl start apache2'
+                                        remoteDirectory: '/var/www/html',
+                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && sudo /usr/bin/systemctl start apache2'
                                     )
                                 ]
                             )
@@ -52,8 +52,8 @@ pipeline {
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'index.html',
-                                        remoteDirectory: '/tmp',
-                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && unzip /tmp/index.html -d /var/www/html && sudo /usr/bin/systemctl start apache2'
+                                        remoteDirectory: '/var/www/html',
+                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && sudo /usr/bin/systemctl start apache2'
                                     )
                                 ]
                             )
