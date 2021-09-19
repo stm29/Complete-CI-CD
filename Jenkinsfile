@@ -7,7 +7,7 @@ pipeline {
             sh'mkdir ios'
             }
         }
-        stage('DeployToStaging') {
+        stage('DeployToStaging1') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
