@@ -26,7 +26,7 @@ pipeline {
                                     sshTransfer(
                                         sourceFiles: 'index.html',
                                         remoteDirectory: '/var/www/html',
-                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && rm -rf /var/www/html* && sudo /usr/bin/systemctl start apache2'
+                                        execCommand: 'sudo /usr/bin/systemctl stop apache2 && sudo rm -rf /var/www/html/* && sudo /usr/bin/systemctl start apache2'
                                     )
                                 ]
                             )
