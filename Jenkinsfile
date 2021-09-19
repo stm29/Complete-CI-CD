@@ -7,7 +7,7 @@ pipeline {
             sh'mkdir ios'
             }
         }
-        stage('DeployToStaging1') {
+        stage('DeployToStagingAllow') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
@@ -21,7 +21,7 @@ pipeline {
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: '**/**',
-                                        remoteDirectory: '.')
+                                        remoteDirectory: '/')
                                 ]
                             )
                         ]
