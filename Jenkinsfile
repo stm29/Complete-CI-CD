@@ -31,10 +31,11 @@ pipeline {
                 }
             }
         }
+    }
+    
     post { 
         always { 
             cleanWs()
         }
      }
-  }
 }
