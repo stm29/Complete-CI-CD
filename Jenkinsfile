@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
     stages {
@@ -31,15 +30,16 @@ pipeline {
                     )
                 }
             }
-            stage('DeployToProduction') {
+        }
+                stage('DeployToProd') {
                             when {
                                     branch 'main'
                                  }
             steps{
-             input 'Does the staging environment look OK?'
-             milestone(1)
-             sh'mkdir -p /Prod'
-            }
+                   input 'Does the staging environment look OK?'
+                   milestone(1)
+                   sh'mkdir -p /prod'
+            }                     
             steps {
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
@@ -53,13 +53,15 @@ pipeline {
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: '**/**',
-                                        remoteDirectory: '/Prod')
+                                        remoteDirectory: '/prod')
                                 ]
                             )
                         ]
                     )
                 }
             }
+        }
+    }
         post { 
         always { 
             cleanWs()
