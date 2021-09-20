@@ -35,10 +35,15 @@ pipeline {
                             when {
                                     branch 'main'
                                  }
+            stage('mkdirPord'){
+            steps{
+            input 'Does the staging environment look OK?'
+            milestone(1)
+            sh'mkdir /prod'
+            }
             steps {
                  input 'Does the staging environment look OK?'
                  milestone(1)
-                 sh'mkdir ../../../../../prod'
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         publishers: [
