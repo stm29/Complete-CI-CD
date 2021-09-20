@@ -9,6 +9,9 @@ pipeline {
         }
         stage('DeployToStagingAllow') {
             steps {
+                            when {
+                                    branch 'master'
+                                 }
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         publishers: [
