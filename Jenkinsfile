@@ -31,8 +31,6 @@ pipeline {
                     )
                 }
             }
-        }
-    }
             stage('DeployToProduction') {
                             when {
                                     branch 'main'
