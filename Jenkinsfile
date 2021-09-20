@@ -31,16 +31,16 @@ pipeline {
                 }
             }
         }
-        stage('DeployToProd') {
-                            when {
-                                    branch 'main'
-                                 }
             stage('mkdirPord'){
             steps{
             input 'Does the staging environment look OK?'
             milestone(1)
             sh'mkdir /prod'
             }
+        stage('DeployToProd') {
+                            when {
+                                    branch 'main'
+                                 }
             steps {
                  input 'Does the staging environment look OK?'
                  milestone(1)
