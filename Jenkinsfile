@@ -4,6 +4,7 @@ pipeline {
         stage('mkdir'){
             steps{
             sh'mkdir ios'
+            sh 'mkdir /prod'
             }
         }
         stage('DeployToStaging') {
@@ -31,12 +32,6 @@ pipeline {
                 }
             }
         }
-            stage('mkdirPord'){
-            steps{
-            input 'Does the staging environment look OK?'
-            milestone(1)
-            sh'mkdir /prod'
-            }
         stage('DeployToProd') {
                             when {
                                     branch 'main'
