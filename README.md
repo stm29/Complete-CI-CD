@@ -1,5 +1,5 @@
 ### CI-CD
-## Jenkins Pipeline
+## Jenkins Multi Branch Pipeline
 
 - Create Jenkins user on the server, and set password, 
    - Install publish over SSH plugin, in Manage Jenkins option --> Configure System --> set IP on SSH option 
