@@ -38,7 +38,7 @@ pipeline {
             steps {
                  input 'Does the staging environment look OK?'
                  milestone(1)
-                 sh'mkdir /prod'
+                 sh'mkdir ../../../../../prod'
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         publishers: [
