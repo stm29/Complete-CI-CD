@@ -9,7 +9,7 @@ pipeline {
         }
         stage('DeployToStaging') {
                             when {
-                                    branch 'master'
+                                    branch 'main'
                                  }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'web_123', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
