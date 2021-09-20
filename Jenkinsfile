@@ -4,7 +4,7 @@ pipeline {
         stage('mkdir'){
             steps{
             sh'mkdir ios'
-            sh 'mkdir /prod'
+            sh 'cd /'
             }
         }
         stage('DeployToStaging') {
